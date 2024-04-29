@@ -78,9 +78,9 @@ class Solution
     Node delete(Node head, int k)
     {
 	// Your code here
-	if (head == null) {
-            return null;
-        }
+// 	if (head == null) {
+//             return null;
+//         }
         if (k == 1) {
             //in this case I need to remove entire linked list
 //            freeList();
