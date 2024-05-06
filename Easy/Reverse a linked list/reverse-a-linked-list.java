@@ -71,20 +71,24 @@ class Solution
     Node reverseList(Node head)
     {
         // code here
-         Stack<Integer> s = new Stack<>();
-        Node ptr = head;
-        while(ptr.next != null){
-           
-            s.push(ptr.data);
-             ptr = ptr.next;
-        }
-         s.push(ptr.data);
-
-       ptr = head;
-        while(!s.isEmpty()){
-                ptr.data = s.pop();
-                ptr=ptr.next;
-        }
+        if(head == null || head.next == null){
             return head;
+        }
+        
+        Node prev = null;
+        Node nextnode = head;
+        Node currnode = head;
+        
+        while(currnode != null){
+            
+            nextnode = nextnode.next;
+            currnode.next = prev;
+            prev = currnode;
+            currnode = nextnode;
+            
+        }
+        head = prev;
+        return head;
+        
     }
 }
