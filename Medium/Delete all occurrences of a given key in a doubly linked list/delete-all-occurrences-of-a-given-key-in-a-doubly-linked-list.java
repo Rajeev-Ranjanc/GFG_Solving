@@ -108,10 +108,10 @@ class Solution {
                 if (prevNode != null) {
                     prevNode.next = nextNode;
                 }
+                
+            } 
                 temp = temp.next;
-            } else {
-                temp = temp.next;
-            }
+            
         }
         // display(head);
         return head;
