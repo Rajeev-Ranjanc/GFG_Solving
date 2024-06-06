@@ -117,19 +117,29 @@ class Solution
     ArrayList<Integer> inOrder(Node root)
     {
         // Code
-         ArrayList<Integer> ans = new ArrayList<>();
-        helper(root , ans);
-        return ans;
-    }
-    public void helper(Node root , ArrayList<Integer> ans ){
-        if(root == null){
-            return;
+         if (root == null) {
+            return new ArrayList<>();
         }
-        helper(root.left,ans);
-       
-        ans.add(root.data);
-         helper(root.right,ans);
-       
+
+        Stack<Node> stack = new Stack<>();
+
+        ArrayList<Integer> list = new ArrayList<>();
+        Node temp = root;
+        while (true) {
+            if (temp != null) {
+                stack.push(temp);
+                temp = temp.left;
+            } else {
+                if (stack.isEmpty()) {
+                    break;
+                }
+                Node top = stack.pop();
+                list.add(top.data);
+                temp = top.right;
+            }
+        }
+
+        return list;
     }
     
     
