@@ -118,6 +118,14 @@ class Solution
     //value of the BST and the given integer.
     static int minDiff(Node  root, int K) 
     { 
+        /*
+  https://www.geeksforgeeks.org/problems/find-the-closest-element-in-bst/1
+  Nothing fancy first of all checked is root null if so simply returned the K otherwise
+  ran a loop till root is not null. before it initialised a variable called tillMax in this
+  I'm storing minimum difference between root value and K on every move either it left or right
+  and if root val is equal to the K then return otherwise if root.val is smaller than K root made right
+  move else left move but everytime I'm updating the tillMax on every move.
+*/
         // Write your code here
           if (root == null) {
             return K;
