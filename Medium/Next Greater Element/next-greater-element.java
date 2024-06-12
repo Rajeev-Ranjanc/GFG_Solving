@@ -35,28 +35,27 @@ class Solution
     public static long[] nextLargerElement(long[] arr, int n)
     { 
         // Your code here
-         Stack<Long> stack = new Stack<>();
-        long[] ans = new long[arr.length];
+          long[] ans = new long[n];
         
-        for (int i = arr.length - 1; i >= 0; i--) {
-            long num = arr[i];
+        Arrays.fill(ans, -1);
+        Stack<Long> stack = new Stack<>();
+        stack.push(arr[n - 1]);
+
+        for (int i = n - 2; i >= 0; i--) {
+
+            while (!stack.isEmpty() && stack.peek() <= arr[i]) {
+                stack.pop();
+            }
+
             if (stack.isEmpty()) {
                 ans[i] = -1;
             } else {
-
-                while (!stack.isEmpty() && stack.peek() <= num) {
-                    stack.pop();
-                }
-                if (!stack.isEmpty()) {
-                    ans[i] = stack.peek();
-                } else {
-                    ans[i] = -1;
-                }
+                ans[i] = stack.peek();
             }
-            stack.push(num);
+            stack.push(arr[i]);
+
+
         }
-
-
-        return ans;
+return ans;
     } 
 }
