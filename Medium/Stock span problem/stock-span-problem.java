@@ -10,33 +10,29 @@ class Solution {
     // Function to calculate the span of stockâ€™s price for all n days.
     public static int[] calculateSpan(int price[], int n) {
         // Your code here
-       int[] ans = new int[n];
+          Stack<Integer> stack = new Stack<>();
 
-        Stack<Integer> stack = new Stack<>();
+        int[] ans = new int[n];
+
+        ans[0] = 1;
 
         stack.push(0);
 
-        ans[0] = 1;
-        
-        for (int i = 1; i < price.length; i++) {
+        for (int i = 1; i < n; i++) {
 
-            while (!stack.isEmpty() && price[stack.peek()] <= price[i]) {
+            while (!stack.isEmpty() && price[i] >= price[stack.peek()]) {
                 stack.pop();
             }
 
-            if (stack.isEmpty()) {
-
-                ans[i] = i + 1;
-
-            } else {
+            if(!stack.isEmpty())
 
                 ans[i] = i - stack.peek();
-
+            else {
+                ans[i] = i+1;
             }
 
             stack.push(i);
         }
-
         return ans;
     }
 }
